@@ -1,0 +1,48 @@
+php -S localhost:port nomdufichier pour démarrer lampp depuis le dossier contenant ce fichier
+/opt/lampp/lampp stop/start
+<pre> écrit le texte tel quel
+print_r print une array(php)
+" remplace les variables php sans concat, ' nécessite concat. (donc ' plus rapide) 
+htmlspecialchars pour échapper les indicateurs de balise html (< et > remplacés par &lt et &gt)
+strip_tags pour retirer un tag html entier
+nl2br pour ajouter un br à chaque retour chariot
+
+ne pas fermer la balise php dans les fichiers qui ne contiennent que du php
+<?php echo("blablablabl");?> === <?=echo("blablablabl");?>
+pour ajouter une fonctionnalité : Vue, Controller puis Modèle (tester la vue avec des exemples passés par le controller)
+ob_start, ob_get_clean et compagnie
+
+
+cours Adoptez une architecture MVC en php, TP -> https://openclassrooms.com/fr/courses/4670706-adoptez-une-architecture-mvc-en-php/7848796-entrainez-vous-modifiez-un-commentaire
+
+QCM poo faux https://openclassrooms.com/fr/courses/1665806-programmez-en-oriente-objet-en-php/exercises/4166
+
+objets toujours passés en réference, & nécessaire pour variables
+self au lieu de this pour réference à la classe, sinon class::méthode
+ajouter \devant une méthode de l'espace global pour ne pas avoir à rechercher la méthode ailleurs
+<?php
+try {
+
+    try {
+
+        throw new Exception('Une première exception');
+
+    } catch (Exception $e) {
+
+        try {} catch (Exception $e) {
+
+            throw new Exception('Une seconde exception');
+
+        }
+
+        throw new Exception('Une troisième exception');
+
+    }
+
+    throw new Exception('Une quatrième exception');
+
+} catch (Exception $e) {
+
+    echo $e->getMessage();
+
+}

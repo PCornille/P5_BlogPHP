@@ -1,0 +1,40 @@
+Route('/'){
+	page d'accueil{
+		nom
+		prénom
+		image
+		dicton
+		menu de navigation
+		formulaire de contact
+		lien vers mon CV
+		liens de réseaux sociaux
+	}
+	page d'index des publications{
+		titre
+		date de modification
+		chapô
+		lien vers la publication
+	}
+	page d'une publication{
+		titre
+		chapô
+		contenu
+		auteur
+		date de modification
+		formulaire d'ajout de commentaires
+		liste des commentaires
+	}
+	page d'ajout d'une publication
+	page de modification d'une publication
+	page de suppression d'une publication
+	page de connexion et d'enregistrement
+}
+
+diagrammes de classe, cas d'utilisation, de sequence (peut-etre)
+
+git flow
+une branch par tache qu'on merge dans main
+
+injection de dependance
+injection par fonction
+
