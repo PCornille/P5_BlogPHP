@@ -1,0 +1,10 @@
+{
+    "name": "cornille/blog_php",
+    "description": "Blog pour le projet 5 OPC",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {}
+}
