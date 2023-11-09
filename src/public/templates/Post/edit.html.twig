@@ -1,0 +1,12 @@
+<html lang="fr">
+<body>
+<h1>Editer Post</h1>
+<form action="/post/edit?id={{ post.id }}" method="post">
+    <h2>{{ post.titre }}</h2>
+    <p>{{ post.contenu }}</p>
+    <label for="contenu">Nouveau contenu</label>
+    <textarea id="contenu" name="contenu"></textarea>
+    <input type="submit" value="modifier"/>
+</form>
+</body>
+</html>

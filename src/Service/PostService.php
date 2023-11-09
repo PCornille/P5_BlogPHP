@@ -2,25 +2,47 @@
 
 namespace App\Service;
 
+use App\Entity\Post;
+use App\Repository\PostRepository;
+
 class PostService
 {
-    public static function index(): void
+
+    private $postRepository;
+
+    public function __construct()
     {
-        //getAll Post, render all posts
+        $this->postRepository = new PostRepository();
     }
 
-    public static function detail(array $request): void
+    public function getAllPosts(): ?array
     {
-        //get 1 post et ses commentaires
+        return $this->postRepository->getAllPosts();
     }
 
-    public static function newPost(array $request): void
+    public function getPost(?int $id): ?Post
     {
-        //new post, return detail (post->id)
+        return $this->postRepository->getPost($id)[0];
     }
 
-    public static function editPost(array $request): void
+    public function newPost(): ?array
     {
-        //get post by request->id, edit post with request->args
+        return $this->postRepository->newPost($_POST['titre'], $_POST['contenu'], 0, (new \DateTimeImmutable())->format('Y-m-d H:i:s'));
+    }
+
+    public function editPost(?int $id): ?Post
+    {
+        $post = $this->postRepository->getPost($id)[0];
+//        if ($_POST['titre'])
+//            $post->setTitre($_POST['titre']);
+        if ($_POST['contenu'])
+            $post->setContenu($_POST['contenu']);
+        $this->postRepository->updatePost($post);
+        return $post;
+    }
+
+    public function removePost(int $id): void
+    {
+        //@todo vérifier si le post éxiste, si l'utilisateur a le droit de le supprimer et ensuite appeler repo pour delete
     }
 }

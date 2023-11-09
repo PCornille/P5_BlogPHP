@@ -1,0 +1,20 @@
+<html lang="fr">
+<body>
+<h1>Nouveau Post</h1>
+<form action="/user/register" method="post">
+    <label for="nom">Nom</label>
+    <input id="nom" type="text" name="nom" placeholder="..."/>
+    <label for="prenom">Prénom</label>
+    <input id="prenom" type="text" name="prenom" placeholder="..."/>
+    <label for="slogan">Slogan</label>
+    <textarea id="slogan" name="slogan" placeholder="..."></textarea>
+    <label for="email">Email</label>
+    <input id="email" type="text" name="email" placeholder="xxxx@yyy.zz"/>
+{#    @todo passer en type email#}
+    <label for="password">Mot de passe</label>
+    <input id="password" type="password" name="password" placeholder="******"/>
+    <input type="submit" value="créer"/>
+    <input type="text" name="imagePath" value="test"/>
+</form>
+</body>
+</html>

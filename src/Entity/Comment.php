@@ -1,6 +1,7 @@
 <?php
 
-class Commentaire extends Comm
+namespace App\Entity;
+class Comment extends BasePost
 {
     public function __construct($titre, $contenu, $auteur)
     {

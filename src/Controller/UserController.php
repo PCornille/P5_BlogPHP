@@ -1,35 +1,45 @@
 <?php
 
 namespace App\Controller;
-use App\RequestHandler;
+
 use App\Service\UserService;
 
-class UserController
+class UserController extends AbstractController
 {
+    private $userService;
 
-    public static function userRequestHandler(array $request){
-        switch ($request["_SERVER"]['REQUEST_METHOD']) {
-            case 'GET':
-                switch ($request["_SERVER"]['PATH_INFO']) {
-                    case '':
-                        UserService::index();
-                        break;
-                    case '/logout':
-                        //kill session puis render UserService::index()
-                }
-                break;
-            case 'POST':
-                switch ($request["_SERVER"]['PATH_INFO']) {
-                    case '/login':
-                        UserService::login($request);
-                        break;
-                    case '/register':
-                        PostService::editPost($request);
-                        break;
-                    default:
-                        RequestHandler::notFound();
-                }
-                break;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->userService = new UserService();
+    }
+
+    public function login()
+    {
+        if (empty($_POST))
+            $this->render('User/login.html.twig', []);
+        else {
+            $user = $this->userService->login();
+            //session start
+            (new PostController())->index();
         }
+    }
+
+    public function register()
+    {
+        if(empty($_POST))
+            $this->render('User/register.html.twig',[]);
+        else{
+            $user=$this->userService->register();
+            if($user) {
+                $_SESSION['user']=$user->getId();
+                (new PostController())->index();
+            }
+        }
+    }
+
+    public function logout(){
+        //kill session
+        (new PostController())->index();
     }
 }

@@ -1,16 +1,28 @@
 <?php
 
-class User
+namespace App\Entity;
+class User implements EntityInterface
 {
-    public function __construct(){
+    public function __construct()
+    {
     }
 
+    private $id;//autoincrement, primary, not nullable
     private $nom;
     private $prenom;
     private $imagePath;
     private $slogan;
     private $email;
     private $password;
+
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     /**
      * @return string

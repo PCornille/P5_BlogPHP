@@ -2,25 +2,37 @@
 
 namespace App\Service;
 
+use App\Entity\User;
+use App\Repository\UserRepository;
+
 class UserService
 {
+    private $userRepository;
 
-    public static function index()
+    public function __construct()
     {
-        //render la page avec formulaire de connexion
+        $this->userRepository = new UserRepository();
     }
 
-    public static function login(array $request)
+    public function login(string $name, string $password): ?User
     {
-        //reçoit le formulaire de connexion
+        $user = $this->userRepository->getUser($name)[0];
+        if (password_verify($password, $user->getPassword()))
+            return $user;
+        return null;//ou retourner une page / un flash ?
     }
 
-    public static function register(array $request)
+    public function register(): ?User
     {
-        //vérifié si l'utilisateur éxiste déjà, sinon crée l'utilisateur
+        $user = $this->userRepository->getUser($_POST['nom']);
+        if (!$user)
+            $user = $this->userRepository->newUser($_POST['nom'], $_POST['prenom'], $_POST['imagePath'], $_POST['slogan'], $_POST['email'], $_POST['password']);
+        var_dump($user);
+        die;
+        return $user;
     }
 
-    public static function logout()
+    public function logout()
     {
         //tue la session
     }

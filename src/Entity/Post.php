@@ -1,6 +1,7 @@
 <?php
 
-class Post extends Comm
+namespace App\Entity;
+class Post extends BasePost
 {
     public function __construct($titre, $contenu, $auteur)
     {
@@ -8,12 +9,12 @@ class Post extends Comm
     }
 
     private $imagePath;
-    private $commentaires=Array();
+    private $commentaires = array();
 
     /**
      * @return string
      */
-    public function getImagePath()
+    public function getImagePath(): string
     {
         return $this->imagePath;
     }
@@ -27,11 +28,11 @@ class Post extends Comm
     }
 
     /**
-     * @param Commentaire $commentaire
+     * @param Comment $commentaire
      */
-    public function addCommentaire(Commentaire $commentaire):void
+    public function addCommentaire(Comment $commentaire): void
     {
-        $this->commentaires=array_push($this->commentaires,$commentaire);
+        $this->commentaires = array_push($this->commentaires, $commentaire);
     }
 
     /**
