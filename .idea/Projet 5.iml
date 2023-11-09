@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/projet-5-test/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="App" />
       <excludeFolder url="file://$MODULE_DIR$/projet-5-test/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/projet-5-test/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/projet-5-test/vendor/sebastian/code-unit-reverse-lookup" />
